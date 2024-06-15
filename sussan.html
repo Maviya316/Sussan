@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sussan's Restaurant</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fcf5ef;
+}
+
+#head {
+  background-color: #dab388;
+}
+
+.container {
+  position: relative; /* Needed for absolute positioning */
+  display: inline-block; /* To shrink-wrap the container */
+}
+
+.name {
+  height: 60px;
+  width: 100px;
+  position: absolute;
+  top: 67%; /* Position at 50% from the top */
+  left: 50%; /* Position at 50% from the left */
+  transform: translate(-50%, -50%); /* Center the image */
+}
+
+section {
+  position: relative;
+}
+
+.btn-pluss {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 22px;
+  width: 30px;
+  margin: 0 auto;
+  background-color: #dab388;
+  transition: width .3s .5s ease, border-radius 1.1s ease;
+}
+
+.btn-pluss a {
+  display: block;
+  position: relative;
+  color: #52240a;
+  text-decoration: none;
+  overflow: hidden;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.btn-pluss a:hover {
+  text-decoration: inherit;
+  color: #dab388;
+  background-color: #52240a;
+  transition: background-color .5s ease;
+}
+
+.btn-pluss:after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  line-height: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  background-color: #52240a;
+  color: #dab388;
+  transform: translateY(-50%) translateX(-50%);
+  transition: all .3s .5s ease;
+  cursor: pointer;
+}
+
+.btn-pluss ul {
+  opacity: 0;
+}
+
+.btn-pluss ul {
+  margin-top: 15px;
+  opacity: 0;
+  width: 100%;
+  margin-left: 0px;
+  transition: all .5s ease;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.btn-pluss ul li {
+  background-color: #e4e4e4;
+  margin-top: 5px;
+  border-radius: 5px;
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+  transition: height 1s ease;
+}
+
+.tooltip {
+  position: relative;
+  padding: 5px;
+  border-radius: 5px;
+  width: 70px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  animation-duration: 3s;
+  animation-name: jump;
+  animation-iteration-count: infinite;
+  background-color: #fff;
+  color: #52240a;
+  transition: all 1s ease;
+  pointer-events: none;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  transform: rotate(45deg);
+  display: block;
+  height: 10px;
+  width: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: inherit;
+}
+
+.tooltip::before {
+  content: '';
+  color: #dab388;
+}
+
+.btn-pluss-wrapper:hover .tooltip {
+  animation-duration: 0s;
+  transition: all 1s ease;
+  color: white;
+  width: 90px;
+}
+
+.btn-pluss-wrapper:hover .tooltip::before {
+  content: 'Choose!';
+  display: block;
+  color: #52240a;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  transition: all 1s .3s ease;
+}
+
+.btn-pluss-wrapper:hover .btn-pluss {
+  width: 150px;
+  border-radius: 15px;
+  padding-bottom: 5px;
+  transition: width .3s ease, border-radius .3s ease, padding-bottom .3s ease;
+}
+
+.btn-pluss-wrapper:hover .btn-pluss::after {
+  transition: all .3s ease;
+  left: 50%;
+  top: 10px;
+  transform: translateY(-5px) translateX(-50%);
+}
+
+.btn-pluss-wrapper:hover .btn-pluss ul {
+  opacity: 1;
+  margin-top: 30px;
+  transition: all 1s ease;
+}
+
+.btn-pluss-wrapper:hover .btn-pluss ul li {
+  height: 25px;
+  transition: height 1s ease;
+}
+
+.btn-pluss-wrapper:hover .btn-pluss ul li:hover {
+  border-bottom: 1px solid darken(#e9e5e5, 10);
+}
+
+@keyframes jump {
+  0% { 
+    transform: translateY(3px)
+  }
+  50% { 
+    transform: translateY(-15px)
+  }
+  100% { 
+    transform: translateY(3px)
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.btn-pluss-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro-p {
+  color: #cf7c6b;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.intro-img {
+  display: block;
+  margin: 20px auto;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.small-img {
+  display: inline-block;
+  margin: 10px;
+}
+
+.small-img img {
+  border-radius: 5px;
+}
+
+.food {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.food .food-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.food .price-tag {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #52240a;
+  margin-bottom: 5px;
+}
+
+.food img {
+  border-radius: 10px;
+}
+
+#about {
+  position: relative;
+  margin: 40px 0;
+  color: #cf7c6b;
+}
+
+#contact {
+  position: relative;
+  margin: 40px 0;
+  background-color: #fcf5ef;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#contact h2 {
+  color: #cf7c6b;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#contact p {
+  color: #cf7c6b;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#map-container {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 40px 0;
+}
+
+#map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+em {
+  display: block;
+  text-align: center;
+  background-color: #fcf5ef;
+  color: #dab388;
+  padding: 20px;
+  width: 100%;
+}
+.small-img {
+  position: absolute;
+}
+
+.I {
+  top: 68%;
+  left: 23%;
+}
+
+.J {
+  top: 100%;
+  left: 4%;
+}
+
+.K {
+  top: 130%;
+  left: 87%;
+}
+    </style>
+</head>
+<body>
+
+<div id="head">
+    <div class="container">
+        <img class="top" src="https://i.ibb.co/1fmfRy2/1718344255954.jpg" alt="Top Image">
+        <img class="name" src="https://i.ibb.co/PjYrs6f/1718344632277.jpg" alt="Name Image">
+    </div>
+
+    <div class="container">
+        <img src="https://i.ibb.co/LrWHBY9/1718355763138.jpg" alt="Banner Image" style="width:100%; height:auto;">
+        <nav class="btn-pluss-wrapper">
+            <h2 class="tooltip">Menu</h2>
+            <div class="btn-pluss">
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="intro-p">
+    <h1>NICE TO MEET YOU</h1>
+    <p>Welcome to my blog! I'm Brigitte Schwartz aka The Fiaza Foodie. I'm a culinary chef and the owner of San Dias Café. When I'm not busy in the kitchen, you can find me sampling different dishes from restaurants all over the world. Join me on a gastronomic journey one blog post at a time!</p>
+    <img class="intro-img" src="https://i.ibb.co/DpwmH84/1718360960772-removebg-preview.png" alt="Intro Image">
+</div>
+
+<div class="small-img I">
+    <img src="https://i.ibb.co/xSwHCyn/1718361560123-removebg-preview.png" alt="I Image" width="143" height="110">
+</div>
+<div class="small-img J">
+    <img src="https://i.ibb.co/wrWqDFD/1718362391010.jpg" alt="J Image" width="40" height="50">
+</div>
+<div class="small-img K">
+    <img src="https://i.ibb.co/B4zYvgh/1718362350957.jpg" alt="K Image" width="60" height="70">
+</div>
+<div class="food">
+    <div class="food-item">
+        <div class="price-tag">$35</div>
+        <img src="https://i.ibb.co/NxbZnnx/781257c4cb1de9ded55e28d9b6b20610.jpg" alt="Food Image 1" width="210" height="200">
+    </div>
+    
+    <div class="food-item">
+        <div class="price-tag">$35</div>
+        <img src="https://i.ibb.co/cF2Mkxb/fd63585b5488da2ca0f0453975e4fc02.jpg" alt="Food Image 2" width="210" height="200">
+    </div>
+    
+    <div class="food-item">
+        <div class="price-tag">$35</div>
+        <img src="https://i.ibb.co/2SXg9Pt/966b2d23506533f0ea2301ec530a7ec6.jpg" alt="Food Image 3" width="210" height="200">
+    </div>
+</div>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>Welcome to Sussan's Restaurant, a culinary destination nestled in the heart of the USA, where every dish tells a story of passion and dedication. Founded by Miss Sussan Marry and her husband, our restaurant is a testament to their shared love for exquisite cuisine and warm hospitality.</p>
+    <p>Drawing inspiration from their travels and culinary experiences, Miss Sussan and her husband have curated a menu that celebrates the rich tapestry of flavors from around the world, while also embracing local ingredients and traditions. From hearty American classics to innovative fusion creations, each dish is crafted with care and attention to detail.</p>
+    <p>At Sussan's Restaurant, we believe in creating not just meals, but memorable dining experiences that delight the senses and nourish the soul. Whether you're joining us for a romantic dinner, a casual brunch with friends, or a special celebration, our dedicated team is committed to ensuring that every moment spent with us is nothing short of exceptional.</p>
+    <p>Come indulge in the magic of gastronomy at Sussan's Restaurant, where every bite is a celebration of love, flavor, and togetherness.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Address: 123 Main Street, Anytown, USA</p>
+    <p>Phone: (123) 456-7890</p>
+    <p>Email: info@sussansrestaurant.com</p>
+</section>
+
+<div id="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.825087361833!2d-122.40761938468612!3d37.77574667975958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580840dd9e0c3%3A0xe008b1c7bd9f9597!2s123%20Main%20St%2C%20San%20Francisco%2C%20CA%2094105%2C%20USA!5e0!3m2!1sen!2s!4v1623684450882!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<em>by maviya</em>
+
+<script src="script.js"></script>
+</body>
+</html>
